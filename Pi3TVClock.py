@@ -13,7 +13,7 @@ import RPi.GPIO as GPIO
 from xbmcjson import XBMC, PLAYER_VIDEO
 
 JSONRPC = "http://localhost:8080/jsonrpc"
-ROOT_PATH = "/home/osmc/Movie/"
+ROOT_PATH = "/home/osmc/Movies/"
 BIN_PATH = "bin"
 MV_DIR = ["s1", "s2", "s3"]
 
