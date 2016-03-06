@@ -22,7 +22,7 @@ for DIR in MV_DIR:
     del MV_DIR[MV_DIR.index(DIR)]
 
 MV_DIR_count = 0
-get_mv_names = os.path.listdir(ROOT_PATH + MV_DIR[MV_DIR_count])
+get_mv_names = os.listdir(ROOT_PATH + MV_DIR[MV_DIR_count])
 get_mv = ROOT_PATH + MV_DIR[MV_DIR_count] + "/" + \
     get_mv_names[random.randint(0, len(get_mv_names) - 1)]
 
