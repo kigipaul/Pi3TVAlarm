@@ -11,6 +11,9 @@ GPIO.setup(PIN, GPIO.IN)
 while True:
   if COUNT == END:
     COUNT = 0
+    get_pid = os.popen('pgrep -f "^python Pi3TVClock.py"').read()[:-1]
+    if not get_pid == "":
+      os.system("kill -9 " + get_pid)
     os.system("killall Pi3TVClock.py")
     print "Killed Pi3TVClock"
   if GPIO.input(PIN):
