@@ -7,10 +7,10 @@ cec() {
   echo "$*" | cec-client -s -d 1
 }
 
-if [ "$1"="h" -o "$1"="help" ]; then
-  usage
-  cec h
-else
-  cec $*
-fi
-
+while [ ! -z "$1"]; do
+  case $1 in
+    "help") usage; cec h;exit 0;;
+    "h") usage; cec h;exit 0;;
+    *) cec $*;exit 0;;
+  esac
+done
