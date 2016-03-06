@@ -7,7 +7,7 @@ cec() {
   echo "$*" | cec-client -s -d 1
 }
 
-while [ ! -z "$1"]; do
+while [ ! -z "$1" ]; do
   case $1 in
     "help") usage; cec h;exit 0;;
     "h") usage; cec h;exit 0;;
