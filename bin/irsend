@@ -20,7 +20,7 @@ while [ ! -z "$1" ]; do
 	"send") 
 	  irsend -d ${DEVICE} send_once ${NAME} $2;
 	  exit 0;;
-    "help") usage;;
-    *) usage;;
+    "help") usage;exit 0;;
+    *) usage;exit 0;;
   esac
 done
