@@ -1,0 +1,26 @@
+#!/bin/bash
+
+usage() {
+  echo "Usage: $0 <Commands>"
+  echo ""
+  echo "Commands:"
+  echo -e "  list\t\t\t: list IR Command"
+  echo -e "  send <IR Command>\t: send IR Command"
+  echo -e "  help\t\t\t: show usage"
+  echo ""
+}
+
+DEVICE="/var/run/lirc/lircd-lirc0"
+NAME="Pi3TVClock"
+while [ ! -z "$1" ]; do
+  case $1 in
+    "list") 
+	  irsend -d ${DEVICE} list ${NAME} "";
+	  exit 0;;
+	"send") 
+	  irsend -d ${DEVICE} send_once ${NAME} $2;
+	  exit 0;;
+    "help") usage;;
+    *) usage;;
+  esac
+done

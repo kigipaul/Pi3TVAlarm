@@ -1,0 +1,16 @@
+#!/bin/bash
+usage() {
+  echo "Usage: $0 <Commands>"
+}
+
+cec() {
+  echo "$*" | cec-client -s -d 1
+}
+
+if [ "$1"="h" -o "$1"="help" ]; then
+  usage
+  cec h
+else
+  cec $*
+fi
+
