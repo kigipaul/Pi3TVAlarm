@@ -12,6 +12,7 @@ while True:
   if COUNT == END:
     COUNT = 0
     os.system("killall Pi3TVClock.py")
+    print "Killed Pi3TVClock"
   if GPIO.input(PIN):
-    count += 1
+    COUNT += 1
   time.sleep(0.5)
