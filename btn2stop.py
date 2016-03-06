@@ -11,7 +11,7 @@ GPIO.setup(PIN, GPIO.IN)
 while True:
   if COUNT == END:
     COUNT = 0
-	os.system("killall Pi3TVClock.py")
+    os.system("killall Pi3TVClock.py")
   if GPIO.input(PIN):
     count += 1
   time.sleep(0.5)
