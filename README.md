@@ -17,12 +17,16 @@ Using btn3stop.py with physical button can iterrupt Pi3TVClock.py.
 
 
 ## Installation
-Installing request package
+Install request package
 <pre>
 sudo apt-get install -y gcc python python-pip git
 sudo pip install RPi.GPIO
 sudo pip install xbmc-client
 </pre>
+
+Install Pi3TVClock
+<pre>git clone https://github.com/kigipaul/Pi3TVClock.git<pre>
+
 
 ## Start script
 ###Start btn2stop to background:
