@@ -1,12 +1,10 @@
-#
-# Name: Pi3TVClock.py
-# LANG: Python
+#!/usr/bin/env python
+
+# Author: kigipaul
 # TARGET SYSTEM: Raspberry Pi 3 with OSMC
-# Author: kigipaul (kigipaul@gmail.com)
 # DATE: 2016/3
 
 import os
-import json
 import time
 import random
 from xbmcjson import XBMC, PLAYER_VIDEO

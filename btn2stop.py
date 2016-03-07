@@ -1,3 +1,9 @@
+#!/usr/bin/env python
+
+# Author: kigipaul
+# TARGET SYSTEM: Raspberry Pi 3 with OSMC
+# DATE: 2016/3
+
 import time
 import os
 import Pi3TVClock
@@ -18,7 +24,7 @@ while True:
     TVctrl = Pi3TVClock.Pi3TVClock()
     TVctrl.turn_off_tv(TVctrl.check_tv_status())
     TVctrl.stop_mv()
-    print "Killed Pi3TVClock"
+    print "[DEBUG] Killed Pi3TVClock"
   if GPIO.input(PIN):
     COUNT += 1
   time.sleep(0.5)
