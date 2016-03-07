@@ -9,21 +9,20 @@ import os
 import json
 import time
 import random
-import RPi.GPIO as GPIO
 from xbmcjson import XBMC, PLAYER_VIDEO
 
 
 class Pi3TVClock(object):
   def __init__(self):
     self.JSONRPC = "http://localhost:8080/jsonrpc"
-    self.xbmc = XBMC(JSONRPC)
+    self.xbmc = XBMC(self.JSONRPC)
     self.ROOT_PATH = "/home/osmc/Movies/"
     self.BIN_PATH = "bin"
     self.MV_DIR = ["s1", "s2", "s3"]
     self.MV_DIR_count = 0
 
     for DIR in self.MV_DIR:
-      if not os.path.dirname(self.ROOT_PATH + self.DIR):
+      if not os.path.dirname(self.ROOT_PATH + DIR):
         del self.MV_DIR[self.MV_DIR.index(DIR)]
 
   def get_mv(self):
@@ -39,23 +38,33 @@ class Pi3TVClock(object):
     time.sleep(3)
     return TV_status
 
+  def turn_off_tv(self, status):
+    if status == "":
+      os.system("./" + self.BIN_PATH + "/irsend send KEY_POWER")
+
   def turn_on_tv(self, status, action = 0):
     if not status == "":
-      os.system("./" + BIN_PATH + "/irsend send KEY_POWER")
-      time.sleep(10)
       if action == 1:
         self.MV_DIR_count += 1
-        if self.MV_DIR_count >= len(MV_DIR):
+        # Actions when all video played
+        if self.MV_DIR_count >= len(self.MV_DIR):
           return False
-      self.start_mv(self.get_mv)
+      os.system("./" + self.BIN_PATH + "/irsend send KEY_POWER")
+      time.sleep(10)
+      self.start_mv(self.get_mv())
     return True
 
-  def start_mv(self, path)
-    self.xbmc.Player.Open("item":{"file":path})
+  def start_mv(self, path):
+    self.xbmc.Player.Open({"item":{"file":path}})
+
+  def stop_mv(self):
+    get_player = json.dumps(self.xbmc.Player.GetActivePlayers())
+    if not get_player:
+      self.xbmc.Player.Stop({"playerid":get_player[0]["playerid"]})
 
   def run(self):
-    self.turn_on_tv(self.check_tv_status)
-    while self.turn_on_tv(self.check_tv_status, 1):
+    self.turn_on_tv(self.check_tv_status())
+    while self.turn_on_tv(self.check_tv_status(), 1):
       continue
 
 if __name__ == "__main__":
