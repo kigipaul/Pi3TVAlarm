@@ -30,13 +30,19 @@ Install Pi3TVClock
 
 ## Start script
 ###Start btn2stop to background:
-<pre>sudo python btn2stop.py &</pre>
+<pre>
+cd Pi3TVClock
+sudo python btn2stop.py &
+</pre>
 
 ###Direct start Pi3TVClock.py
-<pre>sudo python Pi3TVClock.py</pre>
+<pre>
+cd Pi3TVClock
+sudo python Pi3TVClock.py
+</pre>
 
 ###Using crontab to start Pi3TVClock.py
 <pre>sudo crontab -e</pre>
 Setting crontab
-<pre>0 */1 * * * sudo python Pi3TVClock.py & > /dev/null 2>&1 </pre>
+<pre>0 */1 * * * cd Pi3TVClock && sudo python Pi3TVClock.py & > /dev/null 2>&1 </pre>
 
