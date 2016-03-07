@@ -58,8 +58,8 @@ class Pi3TVClock(object):
     self.xbmc.Player.Open({"item":{"file":path}})
 
   def stop_mv(self):
-    get_player = json.dumps(self.xbmc.Player.GetActivePlayers())
-    if not get_player:
+    get_player = self.xbmc.Player.GetActivePlayers()["result"]
+    if get_player:
       self.xbmc.Player.Stop({"playerid":get_player[0]["playerid"]})
 
   def run(self):
