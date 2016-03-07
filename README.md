@@ -25,7 +25,7 @@ sudo pip install xbmc-client
 </pre>
 
 Install Pi3TVClock
-<pre>git clone https://github.com/kigipaul/Pi3TVClock.git<pre>
+<pre>git clone https://github.com/kigipaul/Pi3TVClock.git</pre>
 
 
 ## Start script
