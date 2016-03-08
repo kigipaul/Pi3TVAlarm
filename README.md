@@ -24,14 +24,14 @@ sudo pip install RPi.GPIO
 sudo pip install xbmc-client
 </pre>
 
-Install Pi3TVClock
+Install Pi3TVAlarm
 <pre>git clone https://github.com/kigipaul/Pi3TVAlarm.git</pre>
 
 
 ## Start script
 ###Start btn2stop to background:
 <pre>
-cd Pi3TVClock
+cd Pi3TVAlarm
 sudo python btn2stop.py &
 </pre>
 
