@@ -6,7 +6,7 @@
 
 import time
 import os
-import Pi3TVClock
+import Pi3TVAlarm
 import RPi.GPIO as GPIO
 
 PIN = 18
@@ -18,13 +18,13 @@ GPIO.setup(PIN, GPIO.IN)
 while True:
   if COUNT == END:
     COUNT = 0
-    get_pid = os.popen('pgrep -f "^python Pi3TVClock.py"').read()[:-1]
+    get_pid = os.popen('pgrep -f "^python Pi3TVAlarm.py"').read()[:-1]
     if not get_pid == "":
       os.system("kill -9 " + get_pid)
-    TVctrl = Pi3TVClock.Pi3TVClock()
+    TVctrl = Pi3TVAlarm.Pi3TVAlarm()
     TVctrl.turn_off_tv(TVctrl.check_tv_status())
     TVctrl.stop_mv()
-    print "[DEBUG] Killed Pi3TVClock"
+    print "[DEBUG] Killed Pi3TVAlarm"
   if GPIO.input(PIN):
     COUNT += 1
   time.sleep(0.5)
