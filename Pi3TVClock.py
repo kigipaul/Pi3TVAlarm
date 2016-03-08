@@ -10,7 +10,7 @@ import random
 from xbmcjson import XBMC, PLAYER_VIDEO
 
 
-class Pi3TVClock(object):
+class Pi3TVAlarm(object):
   def __init__(self):
     self.JSONRPC = "http://localhost:8080/jsonrpc"
     self.xbmc = XBMC(self.JSONRPC)
@@ -66,5 +66,5 @@ class Pi3TVClock(object):
       continue
 
 if __name__ == "__main__":
-  Pi3TVClock().run()
+  Pi3TVAlarm().run()
 
