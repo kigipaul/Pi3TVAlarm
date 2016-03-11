@@ -66,7 +66,6 @@ class Pi3TVAlarm(object):
     self.turn_on_tv(self.check_tv_status())
     while self.turn_on_tv(self.check_tv_status(), 1):
       time.sleep(self.SLEEP_TIME)
-      continue
 
 if __name__ == "__main__":
   Pi3TVAlarm().run()
