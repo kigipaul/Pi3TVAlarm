@@ -19,7 +19,7 @@ class Pi3TVAlarm(object):
     self.MV_DIR = ["s1", "s2", "s3"]
     self.MV_DIR_count = 0
     self.ON_TV_GAP = 10
-    self.SLEEP_TIME = 0.1
+    self.SLEEP_TIME = 10
 
     for DIR in self.MV_DIR:
       if not os.path.dirname(self.ROOT_PATH + DIR):
@@ -48,7 +48,8 @@ class Pi3TVAlarm(object):
         self.MV_DIR_count += 1
         # Actions when all video played
         if self.MV_DIR_count >= len(self.MV_DIR):
-          return False
+          self.MV_DIR_count = len(self.MV_DIR) - 1
+          self.SLEEP_TIME = 0
       os.system("./" + self.BIN_PATH + "/irsend send KEY_POWER")
       time.sleep(self.ON_TV_GAP)
       self.start_mv(self.get_mv())
