@@ -18,7 +18,7 @@ class Pi3TVAlarm(object):
     self.BIN_PATH = "bin"
     self.MV_DIR = ["s1", "s2", "s3"]
     self.MV_DIR_count = 0
-    self.ON_TV_GAP = 10
+    self.ON_TV_GAP = 12
     self.SLEEP_TIME = 10
 
     for DIR in self.MV_DIR:
@@ -57,6 +57,10 @@ class Pi3TVAlarm(object):
 
   def start_mv(self, path):
     self.xbmc.Player.Open({"item":{"file":path}})
+    time.sleep(1)
+    get_player = self.xbmc.Player.GetActivePlayers()["result"]
+    if get_player:
+      self.xbmc.Player.SetRepeat({"playerid":get_player[0]["playerid"]})
 
   def stop_mv(self):
     get_player = self.xbmc.Player.GetActivePlayers()["result"]
