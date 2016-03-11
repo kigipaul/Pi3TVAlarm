@@ -18,6 +18,8 @@ class Pi3TVAlarm(object):
     self.BIN_PATH = "bin"
     self.MV_DIR = ["s1", "s2", "s3"]
     self.MV_DIR_count = 0
+    self.ON_TV_GAP = 10
+    self.SLEEP_TIME = 0.1
 
     for DIR in self.MV_DIR:
       if not os.path.dirname(self.ROOT_PATH + DIR):
@@ -33,7 +35,7 @@ class Pi3TVAlarm(object):
   def check_tv_status(self):
     TV_status = os.popen("./" + self.BIN_PATH + \
             "/cec pow 0|grep 'standby'").read()[:-1]
-    time.sleep(3)
+    time.sleep(4)
     return TV_status
 
   def turn_off_tv(self, status):
@@ -48,7 +50,7 @@ class Pi3TVAlarm(object):
         if self.MV_DIR_count >= len(self.MV_DIR):
           return False
       os.system("./" + self.BIN_PATH + "/irsend send KEY_POWER")
-      time.sleep(10)
+      time.sleep(self.ON_TV_GAP)
       self.start_mv(self.get_mv())
     return True
 
@@ -63,6 +65,7 @@ class Pi3TVAlarm(object):
   def run(self):
     self.turn_on_tv(self.check_tv_status())
     while self.turn_on_tv(self.check_tv_status(), 1):
+      time.sleep(self.SLEEP_TIME)
       continue
 
 if __name__ == "__main__":
