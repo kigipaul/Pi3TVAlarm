@@ -41,8 +41,4 @@ cd Pi3TVAlarm
 sudo python Pi3TVAlarm.py
 </pre>
 
-###Using crontab to start Pi3TVAlarm.py
-<pre>sudo crontab -e</pre>
-Setting crontab
-<pre>0 */1 * * * cd Pi3TVAlarm && sudo python Pi3TVAlarm.py & > /dev/null 2>&1 </pre>
 
